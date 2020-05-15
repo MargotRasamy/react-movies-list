@@ -25,7 +25,7 @@ class CardsList extends Component {
         return (
         <div className="container">
 
-            <div className="cards-list">
+            <div className="cards-list p-3 rounded">
                 {moviesData}
             </div> 
         </div>

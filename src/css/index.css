@@ -6,4 +6,8 @@ body {
 html, body, #root {
   height:100%;
   width:100%;
+  color: rgb(240, 240, 240);
+}
+.app>h1, .app>p{
+  text-align: center;
 }

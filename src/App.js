@@ -5,10 +5,12 @@ import CardsList from './CardsList';
 
 function App() {
   return (
-   <div className="container-fluid app">
+   <div className="container-fluid app d-flex flex-column justify-content-around">
 
-   
+      <h1 className="m-5"> Particeep's movies selection</h1>
       <CardsList />
+
+      <p className="m-2">© Margot Rasamy - 2020</p>
 
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
