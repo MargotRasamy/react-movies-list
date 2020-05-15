@@ -1,0 +1,55 @@
+.cardElement {
+    background: linear-gradient(217deg, rgba(45, 49, 94, 0.8), rgba(63, 53, 85, 0) 70.71%),
+    linear-gradient(127deg, rgb(27, 27, 27), rgb(19, 19, 19) 70.71%),
+    linear-gradient(336deg, rgb(26, 26, 26), rgb(31, 31, 31) 70.71%);
+    color: rgb(240, 240, 240);
+    text-align: center;
+    border-radius: 16px;
+    height:200px;
+}
+
+.cards-list {
+    background-color: rgba(105, 105, 105, 0.2);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 25px;
+
+}
+
+.card-title{
+    font-weight: bold;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 577px) {
+    .cards-list {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .cards-list {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .cards-list {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .cards-list {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+.app {
+    /* background-color: #1B1C20; */
+    min-height: 100%;
+    background-image: url('../images/Rt5ZDX.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
