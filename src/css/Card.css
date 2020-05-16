@@ -10,7 +10,7 @@
 }
 
 .cards-list {
-    background-color: rgba(105, 105, 105, 0.1);
+    background-color: rgba(15, 15, 15, 0.7);
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 25px;
@@ -95,8 +95,7 @@ button:focus {
 }
 
 .icon-buttons>svg{
-    width:16px;
-    height:16px;
+    
     fill: rgb(164, 168, 190); 
 }
 
@@ -104,5 +103,9 @@ button:focus {
     fill: rgb(144, 74, 197);
 }
 
-
+.icons{
+    width:16px;
+    height:16px;
+    margin:0;
+}
 

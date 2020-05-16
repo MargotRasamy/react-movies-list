@@ -34,10 +34,8 @@ class CardsList extends Component {
                 {moviesData}
             </div> 
         </div>
-     
-          
+         
         )
-    
       }
 
 }
