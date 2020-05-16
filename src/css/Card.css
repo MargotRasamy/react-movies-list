@@ -1,11 +1,12 @@
 .cardElement {
-    background: linear-gradient(217deg, rgba(42, 89, 136, 0.8), rgba(63, 53, 85, 0) 70.71%),
+    background: linear-gradient(217deg, rgba(81, 61, 97, 0.8), rgba(63, 53, 85, 0) 70.71%),
     linear-gradient(127deg, rgb(27, 27, 27), rgb(19, 19, 19) 70.71%),
     linear-gradient(336deg, rgb(19, 19, 19), rgb(19, 19, 19) 70.71%);
     
     text-align: center;
     border-radius: 16px;
     height:200px;
+    position: relative;
 }
 
 .cards-list {
@@ -21,7 +22,8 @@
     color: rgb(240, 240, 240);
 }
 .card-category{
-    color: rgb(164, 168, 190);
+    color: rgb(164, 168, 190); 
+    /* #a4a8be */
 }
 
 /* Responsive */
@@ -59,5 +61,48 @@
 }
 
 .progress-background{
-    background-color:  rgb(81, 160, 238) !important;
+    background-color:  rgb(144, 74, 197) !important;
 }
+
+
+button{
+        border: none;
+        padding: 1rem 2rem;
+        margin: 0;
+        text-decoration: none;
+        padding:0;
+        cursor: pointer;
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        width:16px;
+
+}
+button:focus {
+    outline: none !important;
+}
+.icon-buttons{
+    position: absolute;
+    right:14px;
+    bottom:14px;
+}
+
+.icon-buttons>svg{
+    width:16px;
+    height:16px;
+    fill: rgb(164, 168, 190); 
+}
+
+.icon-buttons:hover svg, .icon-buttons:active svg, .icon-buttons:focus svg{
+    fill: rgb(144, 74, 197);
+}
+
+
+

@@ -7,7 +7,7 @@ function App() {
   return (
    <div className="container-fluid app d-flex flex-column justify-content-around">
 
-      <h1 className="m-5"> Particeep's movies selection</h1>
+      <h1 className="m-5">PARTICEEP'S MOVIE SELECTION</h1>
       <CardsList />
 
       <p className="m-2">© Margot Rasamy - 2020</p>

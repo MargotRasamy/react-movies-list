@@ -2,6 +2,13 @@ body {
   margin: 0;
 }
 
+/* fonts */
+@font-face {
+  font-family: "Titles";
+  src: url("../fonts/helvetica-neue/HelveticaNeue-Heavy.ttf");
+  font-weight: normal;
+}
+
 
 html, body, #root {
   height:100%;
@@ -11,4 +18,13 @@ html, body, #root {
 }
 .app>h1, .app>p{
   text-align: center;
+}
+.app>h1{
+  color: rgb(246, 246, 246);
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Titles';
+  /* background:linear-gradient(rgb(42, 131, 255), rgb(77, 128, 172));
+  background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
