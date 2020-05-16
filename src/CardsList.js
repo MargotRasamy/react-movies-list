@@ -12,7 +12,7 @@ class CardsList extends Component {
             movies.map(
                 (movie) => {
                     return (
-                        <Card title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes}/>
+                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes}/>
                     )
                 }
             )
