@@ -90,8 +90,16 @@ button:focus {
 }
 .icon-buttons{
     position: absolute;
-    right:14px;
+
     bottom:14px;
+}
+
+.delete-button{
+    right:14px;
+}
+
+.toggle-button{
+    right:48px;
 }
 
 .icon-buttons>svg{
