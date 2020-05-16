@@ -11,10 +11,15 @@ class CardsList extends Component {
         const moviesData = movies.length ? (
             movies.map(
                 (movie) => {
+                    // Deleting movie
+                    const handleDelete = () => {
+                        this.props.deleteMovie(movie.id);
+                    }
                     return (
-                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes}/>
+                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete}/>
                     )
                 }
+                
             )
               
         )
@@ -41,9 +46,19 @@ class CardsList extends Component {
   
   const mapStateToProps = (state) => {
       return {
-        movies: state
-        
+        movies: state.movies
       }
   }
 
-    export default connect(mapStateToProps)(CardsList);
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteMovie : (id) => {
+            dispatch({
+                type : "DELETE_MOVIE",
+                id : id
+            })
+        }
+    }
+  }
+
+    export default connect(mapStateToProps, mapDispatchToProps)(CardsList);
