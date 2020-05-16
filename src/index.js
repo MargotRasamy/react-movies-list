@@ -9,7 +9,7 @@ import rootReducer from './redux/reducers/rootReducer';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 //Création du store
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>

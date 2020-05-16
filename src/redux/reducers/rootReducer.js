@@ -70,6 +70,7 @@ const initState = {
 
 
 const rootReducer = (state = initState, action) => {
+  
   // delete movie action
   if (action.type === "DELETE_MOVIE") {
     // nouveau state
@@ -82,6 +83,41 @@ const rootReducer = (state = initState, action) => {
     }
 
   }
+
+  // like a movie
+  else if (action.type === "LIKE_MOVIE") {
+    // nouveau state
+    let newMovies = state.movies.filter(movie => {
+      if (action.id === movie.id){
+        movie.likes += 1
+      }
+      return action.id
+    })
+    return{
+      ...state,
+      movies: newMovies
+    }
+
+  }
+
+  // like a movie
+  else if (action.type === "DISLIKE_MOVIE") {
+    // nouveau state
+    let newMovies = state.movies.filter(movie => {
+      if (action.id === movie.id){
+        movie.dislikes += 1
+
+      }
+      return action.id
+    })
+    return{
+      ...state,
+      movies: newMovies
+    }
+
+  }
+
+
   return state
 
 }
