@@ -1,5 +1,5 @@
 .cardElement {
-    background: linear-gradient(217deg, rgba(45, 49, 94, 0.8), rgba(63, 53, 85, 0) 70.71%),
+    background: linear-gradient(217deg, rgba(42, 89, 136, 0.8), rgba(63, 53, 85, 0) 70.71%),
     linear-gradient(127deg, rgb(27, 27, 27), rgb(19, 19, 19) 70.71%),
     linear-gradient(336deg, rgb(19, 19, 19), rgb(19, 19, 19) 70.71%);
     
@@ -56,4 +56,8 @@
     background-image: url('../images/Rt5ZDX.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.progress-background{
+    background-color:  rgb(81, 160, 238) !important;
 }

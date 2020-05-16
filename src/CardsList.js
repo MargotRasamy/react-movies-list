@@ -12,7 +12,7 @@ class CardsList extends Component {
             movies.map(
                 (movie) => {
                     return (
-                        <Card title={movie.title} category={movie.category}/>
+                        <Card title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes}/>
                     )
                 }
             )
@@ -41,8 +41,9 @@ class CardsList extends Component {
   
   const mapStateToProps = (state) => {
       return {
-        movies: state 
+        movies: state
+        
       }
   }
-    
+
     export default connect(mapStateToProps)(CardsList);
