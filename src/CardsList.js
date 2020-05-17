@@ -16,10 +16,14 @@ class CardsList extends Component {
         this.state = {
             liked : false,
             categoryIsSelected : false,
-            categorySelected : ''
+            categorySelected : '',
+            paginationIsSelected : false,
+            moviesPerPage : 12,
+            currentPage : 1
         }
         this.categorySelect = this.categorySelect.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.changeMoviesPerPage = this.changeMoviesPerPage.bind(this)
     }
 
     toggle = () => {
@@ -37,11 +41,20 @@ class CardsList extends Component {
         })
         
     }
+
+    changeMoviesPerPage(e){
+        e.preventDefault();
+        const target = e.target.getAttribute('data-page')
+        this.setState({
+            paginationIsSelected : true,
+            moviesPerPage : target
+        })
+    }
     
     render() {
 
         const { movies } = this.props;
-
+      
         // card movies data
         const moviesData = movies.length ? (  
 
@@ -67,8 +80,22 @@ class CardsList extends Component {
                         } 
                     }
 
-                    return (
+                    if ( movie.category === this.state.categorySelected && this.state.categoryIsSelected ){
+                        return (
+                             <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
+                     )}
+                     else if ( this.state.categorySelected === "All" && this.state.categoryIsSelected){
+                         return (
+                             <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
+                         )
+                     }
+                     else if (!this.state.categoryIsSelected){
+                        return (
                             <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
+                        )
+                     }
+                     else return (
+                            <Fragment></Fragment> 
                     )
                 }   
             )     
@@ -79,50 +106,6 @@ class CardsList extends Component {
             <p>No movies</p>
         )
 
-        // category filtered
-
-        const moviesFiltered = movies.length ? (
-            movies.map(
-            (movie) => {
-
-                 // Deleting movie
-                 const handleDelete = () => {
-                    this.props.deleteMovie(movie.id);
-                }
-         
-                // Toggle like/dislike movie
-                const handleToggle = () => {
-                    
-                    if (!this.state.liked){
-                        this.props.likeMovie(movie.id);
-                        this.toggle()
-                    
-                    }
-                    else {
-                        this.props.dislikeMovie(movie.id);
-                        this.toggle()
-                    } 
-                }
-
-                
-                if ( movie.category === this.state.categorySelected ){
-                   return (
-                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
-                )}
-                else if ( this.state.categorySelected === "All"){
-                    return (
-                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
-                    )
-                }
-                else return (
-                 <Fragment></Fragment>
-                )
-
-            })   
-        )
-        : (
-            <p>No movies</p>
-        )
 
         return (
         <div className="container">
@@ -131,17 +114,11 @@ class CardsList extends Component {
               <Filter handleCategory={this.categorySelect}/> }
             
             <div className="cards-list p-3 rounded">
-
-                {/*  Movies list no filter */}
-                { !this.state.categoryIsSelected &&
-                moviesData }
-                
-                {/*  Movies list no filter */}
-                { this.state.categoryIsSelected &&
-                moviesFiltered }
+            
+                {moviesData}
 
             </div> 
-
+                
 
             <Pagination />
         </div>
