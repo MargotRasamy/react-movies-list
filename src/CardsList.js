@@ -2,14 +2,28 @@ import React, { Component } from 'react';
 import './css/Card.css';
 import { connect } from 'react-redux';
 import Card from './Card';
+import Filter from './Filter';
 import { deleteMovie } from '../src/redux/actions/moviesActions';
 import { likeMovie } from '../src/redux/actions/moviesActions';
 import { dislikeMovie } from '../src/redux/actions/moviesActions';
 
-let liked = false;
+
 
 class CardsList extends Component {
+
+    // state
+    state = {
+        liked : false,
+   
+    }
+
+    toggle = () => {
+        this.setState({
+            liked: !this.state.liked
+        })
+    }
     
+
     render() {
         
         const { movies } = this.props;
@@ -25,26 +39,28 @@ class CardsList extends Component {
                     // Toggle like/dislike movie
                     const handleToggle = () => {
                         
-                        if (liked === false){
+                        if (!this.state.liked){
                             this.props.likeMovie(movie.id);
-                            liked = true
+                            this.toggle()
+                           
                         }
-                        else if (liked === true) {
+                        else {
                             this.props.dislikeMovie(movie.id);
-                            liked = false;
+                            this.toggle()
                             
-                        }
-                        
+                        } 
                     }
 
                     return (
-                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>
+                            <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
                     )
                 }
                 
             )
               
         )
+
+        // If there are no movies
         : (
             <p>Aucun film</p>
         );
@@ -52,6 +68,9 @@ class CardsList extends Component {
         return (
         <div className="container">
 
+            { movies.length > 0 &&
+              <Filter/> }
+            
             <div className="cards-list p-3 rounded">
                 {moviesData}
             </div> 
