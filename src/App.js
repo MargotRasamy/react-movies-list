@@ -5,7 +5,7 @@ import CardsList from './CardsList';
 
 function App() {
   return (
-   <div className="container-fluid app d-flex flex-column justify-content-around">
+   <div className="container-fluid app d-flex flex-column ">
 
       <h1 className="m-5">PARTICEEP'S MOVIE SELECTION</h1>
 

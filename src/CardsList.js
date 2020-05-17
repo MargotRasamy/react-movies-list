@@ -36,7 +36,6 @@ class CardsList extends Component {
             categoryIsSelected : true,
             categorySelected : targetCategory
         })
-        
     }
     
     render() {
@@ -48,7 +47,7 @@ class CardsList extends Component {
 
             movies.map(
                 (movie) => {
-                   
+
                     // Deleting movie
                     const handleDelete = () => {
                             this.props.deleteMovie(movie.id);
@@ -65,7 +64,6 @@ class CardsList extends Component {
                         else {
                             this.props.dislikeMovie(movie.id);
                             this.toggle()
-                            
                         } 
                     }
 
@@ -86,14 +84,33 @@ class CardsList extends Component {
         const moviesFiltered = movies.length ? (
             movies.map(
             (movie) => {
+
+                 // Deleting movie
+                 const handleDelete = () => {
+                    this.props.deleteMovie(movie.id);
+                }
+         
+                // Toggle like/dislike movie
+                const handleToggle = () => {
+                    
+                    if (!this.state.liked){
+                        this.props.likeMovie(movie.id);
+                        this.toggle()
+                    
+                    }
+                    else {
+                        this.props.dislikeMovie(movie.id);
+                        this.toggle()
+                    } 
+                }
        
                 if ( movie.category === this.state.categorySelected ){
                    return (
-                    <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes}  />    
+                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
                 )}
                 else if ( this.state.categorySelected === "All"){
                     return (
-                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes}  />    
+                        <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
                     )
                 }
             })   
