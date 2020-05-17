@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './css/Card.css';
 import { connect } from 'react-redux';
 import Card from './Card';
@@ -103,7 +103,7 @@ class CardsList extends Component {
                         this.toggle()
                     } 
                 }
-       
+                
                 if ( movie.category === this.state.categorySelected ){
                    return (
                         <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
@@ -113,6 +113,10 @@ class CardsList extends Component {
                         <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
                     )
                 }
+                else return (
+                 <Fragment></Fragment>
+                )
+
             })   
         )
         : (
