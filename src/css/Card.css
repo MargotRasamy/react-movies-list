@@ -126,11 +126,14 @@ button:focus {
     
 }
 
-.btn-select {
-    background-color: rgb(144, 74, 197) !important; 
+.btn-select, .pagination-select {
+    background-color: rgba(144, 74, 197, 0.8) !important; 
     color: rgb(243, 243, 243) !important;
 }
-.btn-select:hover, .btn-select:active  {
+.pagination-select{
+    border: 0.5px solid rgb(192, 138, 233) !important;
+}
+.btn-select:hover, .btn-select:active , .pagination-select:hover, .pagination-select:active  {
     background-color: rgb(192, 138, 233) !important;
 }
 
@@ -156,4 +159,3 @@ button:focus {
         width: calc(33% - 12.5px)
     }
 }
-

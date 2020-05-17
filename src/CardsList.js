@@ -6,8 +6,7 @@ import Filter from './Filter';
 import { deleteMovie } from '../src/redux/actions/moviesActions';
 import { likeMovie } from '../src/redux/actions/moviesActions';
 import { dislikeMovie } from '../src/redux/actions/moviesActions';
-
-
+import Pagination from './Pagination';
 
 
 class CardsList extends Component {
@@ -36,6 +35,7 @@ class CardsList extends Component {
             categoryIsSelected : true,
             categorySelected : targetCategory
         })
+        
     }
     
     render() {
@@ -103,6 +103,7 @@ class CardsList extends Component {
                         this.toggle()
                     } 
                 }
+
                 
                 if ( movie.category === this.state.categorySelected ){
                    return (
@@ -140,13 +141,15 @@ class CardsList extends Component {
                 moviesFiltered }
 
             </div> 
+
+
+            <Pagination />
         </div>
          
         )
       }
 
 }
- 
   
 const mapStateToProps = (state) => {
     return {

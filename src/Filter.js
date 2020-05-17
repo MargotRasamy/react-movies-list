@@ -39,7 +39,7 @@ class Filter extends Component {
         )
 
         return (
-            <div className="Filter dropdown container row mx-0 mb-5 d-flex justify-content-end">
+            <div className="Filter dropdown container mx-0 mb-5 d-flex justify-content-end">
          
                 <button className="btn btn-select dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filter movies
