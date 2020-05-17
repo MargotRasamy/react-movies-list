@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 
 
 class Filter extends Component {
+    
+    
+    
+
     render() {
 
+          
         const { movies } = this.props;
 
         // For loop to identify the different categories
-        const moviesCategoryList = []
+        const moviesCategoryList = ["All"]
         for (let i = 0; i < movies.length; i++) {
             if (!moviesCategoryList.includes(movies[i].category)) {
                 moviesCategoryList.push(movies[i].category)
@@ -20,8 +25,9 @@ class Filter extends Component {
             
             moviesCategoryList.map(
                 (category) => {
+                    
                     return (
-                        <a className="dropdown-item" alt="dropdown-category" href="#">{category}</a>
+                        <a className="dropdown-item" alt="dropdown-category" href="#" data-category={category} onClick={this.props.handleCategory.bind(this)}>{category}</a>
                     )
                 }   
             )
