@@ -1,5 +1,5 @@
 .cardElement {
-    background: linear-gradient(217deg, rgba(81, 61, 97, 0.8), rgba(63, 53, 85, 0) 70.71%),
+    background: linear-gradient(217deg, rgba(102, 64, 133, 0.8), rgba(63, 53, 85, 0) 70.71%),
     linear-gradient(127deg, rgb(27, 27, 27), rgb(19, 19, 19) 70.71%),
     linear-gradient(336deg, rgb(19, 19, 19), rgb(19, 19, 19) 70.71%);
     
@@ -82,7 +82,7 @@ button{
         font: inherit;
         cursor: pointer;
         outline: inherit;
-        width:16px;
+  
 
 }
 button:focus {
@@ -121,6 +121,38 @@ button:focus {
 
 /* filter */
 .Filter{
-    background-color: rgba(119, 119, 119, 0.4);
+    background-color: rgba(119, 119, 119, 0.1);
     height:40px;
+    
+}
+
+.btn-select {
+    background-color: rgb(144, 74, 197) !important; 
+    color: rgb(243, 243, 243) !important;
+}
+.btn-select:hover, .btn-select:active  {
+    background-color: rgb(192, 138, 233) !important;
+}
+
+.btn-select, .drop-down{
+    width: calc(25% - 12.5px)
+}
+
+
+@media only screen and (max-width: 767px) {
+    .btn-select, .drop-down {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .btn-select, .drop-down {
+        width: calc(50% - 12.5px)
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .btn-select, .drop-down {
+        width: calc(33% - 12.5px)
+    }
 }

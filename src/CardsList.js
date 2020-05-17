@@ -27,6 +27,8 @@ class CardsList extends Component {
     render() {
         
         const { movies } = this.props;
+
+        // card movies data
         const moviesData = movies.length ? (
             
             movies.map(
@@ -62,14 +64,15 @@ class CardsList extends Component {
 
         // If there are no movies
         : (
-            <p>Aucun film</p>
-        );
+            <p>No movies</p>
+        )
+
     
         return (
         <div className="container">
 
             { movies.length > 0 &&
-              <Filter/> }
+              <Filter  /> }
             
             <div className="cards-list p-3 rounded">
                 {moviesData}
