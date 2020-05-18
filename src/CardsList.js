@@ -63,10 +63,10 @@ class CardsList extends Component {
         e.preventDefault();
         const target = e.target.getAttribute('data-page')
         let currentPageCount = this.state.currentPage
-        if ((target === "previous") && (currentPageCount !== 1)) {
+        if ((target === "previous") && (currentPageCount > 1)) {
             currentPageCount = this.state.currentPage - 1
         }
-        else if ((target === "next")  && (currentPageCount !== this.state.totalPageNumber)) {
+        else if ((target === "next")  && (currentPageCount < this.state.totalPageNumber)) {
             currentPageCount = this.state.currentPage + 1
         }
         console.log(currentPageCount)
@@ -132,8 +132,7 @@ class CardsList extends Component {
             if (moviesData === [] ||  moviesData === null) {
                 return moviesData
             }
-            else {
-                
+            else {     
                 var allPages = []
                 let limitPage 
                 let startPage
@@ -153,8 +152,7 @@ class CardsList extends Component {
                 // Deleting movie
                 const handleDelete = () => {
                     this.props.deleteMovie(movie.id);
-                }
-                
+                }     
        
                 // Toggle like/dislike movie
                 const handleToggle = () => {
@@ -195,43 +193,26 @@ class CardsList extends Component {
                     return (
                         <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
                     )                    
+                }  
+
+                else {
+                    return (
+                        <Fragment></Fragment>
+                    )
                 }
-
-                          
-
-                // else {
-                //     return (
-                //         <Fragment></Fragment>
-                //     )
-                // }
           
             }
         )
 
-
-        
-
         return (
         <div className="container">
-         
             { movies.length > 0 &&
               <Filter handleCategory={this.categorySelect}/> }
-            
-            <div className="cards-list p-3 rounded">
- 
-                    {   !this.props.movies.length &&
-                    <p> No movies</p>
-
-                    }
-          
-                    {moviesSelectedPagination}
-                
-                  
-        
-        
+            <div className="cards-list p-3">
+                {   !this.props.movies.length &&
+                <p> No movies</p>}
+                {moviesSelectedPagination}
             </div> 
-                
-
             <Pagination changeMoviesPerPage={this.changeMoviesPerPage} changePage={this.changePage}/>
         </div>
          

@@ -2,7 +2,6 @@
     background: linear-gradient(217deg, rgba(102, 64, 133, 0.8), rgba(63, 53, 85, 0) 70.71%),
     linear-gradient(127deg, rgb(27, 27, 27), rgb(19, 19, 19) 70.71%),
     linear-gradient(336deg, rgb(19, 19, 19), rgb(19, 19, 19) 70.71%);
-    
     text-align: center;
     border-radius: 16px;
     height:200px;
@@ -10,11 +9,11 @@
 }
 
 .cards-list {
-    background-color: rgba(15, 15, 15, 0.7);
+    background-color: rgba(24, 24, 24, 0.646);
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 25px;
-
+    border-radius: 16px;
 }
 
 .card-title{
@@ -25,37 +24,14 @@
     color: rgb(164, 168, 190); 
     /* #a4a8be */
 }
-
-/* Responsive */
-
-@media only screen and (max-width: 577px) {
-    .cards-list {
-        grid-template-columns: repeat(1,1fr);
-    }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    .cards-list {
-        grid-template-columns: repeat(1,1fr);
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .cards-list {
-        grid-template-columns: repeat(2,1fr);
-    }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-    .cards-list {
-        grid-template-columns: repeat(3,1fr);
-    }
+.colored {
+    color: rgb(144, 74, 197);
 }
 
 .app {
     /* background-color: #1B1C20; */
     min-height: 100%;
-    background-image: url('../images/Rt5ZDX.jpg');
+    background-image: url('../images/it.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -120,11 +96,6 @@ button:focus {
 
 
 /* filter */
-.Filter{
-    background-color: rgba(119, 119, 119, 0.1);
-    height:40px;
-    
-}
 
 .btn-select, .pagination-select {
     background-color: rgba(144, 74, 197, 0.8) !important; 
@@ -141,14 +112,21 @@ button:focus {
     width: calc(25% - 12.5px)
 }
 
+/* Responsive */
 
 @media only screen and (max-width: 767px) {
+    .cards-list {
+        grid-template-columns: repeat(1,1fr);
+    }
     .btn-select, .drop-down {
         width: 100%;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .cards-list {
+        grid-template-columns: repeat(2,1fr);
+    }
     .btn-select, .drop-down {
         width: calc(50% - 12.5px)
     }
@@ -158,4 +136,13 @@ button:focus {
     .btn-select, .drop-down {
         width: calc(33% - 12.5px)
     }
+    .cards-list {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+.signature{
+    background-color: rgba(31, 31, 31, 0.503);
+    padding:10px;
+    border-radius: 8px;
 }

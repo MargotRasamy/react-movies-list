@@ -65,10 +65,6 @@ const initState = {
 
 }
 
-  
-// const movies$ = new Promise((resolve, reject) => setTimeout(resolve(movies), 100, movies))
-
-
 const rootReducer = (state = initState, action) => {
   
 
@@ -97,7 +93,7 @@ const rootReducer = (state = initState, action) => {
       return{
         ...state,
         movies: newMovies
-      };}
+    };}
 
     case "DISLIKE_MOVIE" : {
       let newMovies = state.movies.filter(movie => {
@@ -110,7 +106,7 @@ const rootReducer = (state = initState, action) => {
       return{
         ...state,
         movies: newMovies
-      }}
+    }}
       
     
     default:
@@ -121,7 +117,3 @@ const rootReducer = (state = initState, action) => {
 }
 
 export default rootReducer;
-
-  
-//   export const movies$ = new Promise((resolve, reject) => setTimeout(resolve, 100, movies))
-  
