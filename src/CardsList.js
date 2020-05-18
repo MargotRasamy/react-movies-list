@@ -7,7 +7,7 @@ import { deleteMovie } from '../src/redux/actions/moviesActions';
 import { likeMovie } from '../src/redux/actions/moviesActions';
 import { dislikeMovie } from '../src/redux/actions/moviesActions';
 import Pagination from './Pagination';
-import { render } from 'react-dom';
+
 
 
 class CardsList extends Component {
@@ -27,7 +27,7 @@ class CardsList extends Component {
         this.categorySelect = this.categorySelect.bind(this);
         this.toggle = this.toggle.bind(this);
         this.changeMoviesPerPage = this.changeMoviesPerPage.bind(this);
-        this.renderMoviesPages = this.renderMoviesPages.bind(this);
+
         this.changePage = this.changePage.bind(this);
     }
 
@@ -76,85 +76,86 @@ class CardsList extends Component {
         })
     }
 
-    renderMoviesPages = () => {
-        const moviesList = this.props.movies
-        var allPages = []
-        let limitPage 
-        let startPage
-        for (let i = 0 ; i < this.state.totalPageNumber; i++) {
-            limitPage = (this.state.moviesPerPage * (i+1)) 
-            startPage = (this.state.moviesPerPage) * i
-            allPages[i] = moviesList.slice(startPage, limitPage)
-        }
-        return allPages[this.state.currentPage - 1]
-        
-    }
+    
 
     
     render() {
         
         const { movies } = this.props;
-      
-        // card movies data
-        const moviesData = movies.length ? (  
 
-            movies.map(
+         // moviesData
+         const moviesData = movies.length ? (  
+
+            movies.filter(
                 (movie) => {
 
-                    // Deleting movie
-                    const handleDelete = () => {
-                            this.props.deleteMovie(movie.id);
-                    }
-                    
-                    console.log(this.renderMoviesPages())
-                    // Toggle like/dislike movie
-                    const handleToggle = () => {
-                        
-                        if (!this.state.liked){
-                            this.props.likeMovie(movie.id);
-                            this.toggle()
-                           
-                        }
-                        else {
-                            this.props.dislikeMovie(movie.id);
-                            this.toggle()
-                        } 
-                    }
-                    // filter 
-                    if ( (movie.category === this.state.categorySelected) && (this.state.categoryIsSelected) && (!this.state.paginationIsSelected)){
+                
+                    // Filter per category
+                    if ( (movie.category === this.state.categorySelected) && this.state.categoryIsSelected){
                         return (
-                             <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
-                     )}
-                     else if ( (this.state.categorySelected === "All" && this.state.categoryIsSelected) || (!this.state.categoryIsSelected && !this.state.paginationIsSelected)){
-                         return (
-                             <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
-                         )
-                     }
-                    
+                            movie
+                    )}
 
-                     else return (
-                            <Fragment></Fragment>
-                    )
-                   
+                    // ALL category
+                    else if (this.state.categorySelected === "All" && this.state.categoryIsSelected){
+                        return (
+                            movie
+                        )
+                    }
+                    // No filter selected
+                    else if (!this.state.categoryIsSelected){
+                        
+                        return (
+                            movie
+                        )                    
+                    }
+                    // Pagination selected
+                    else if (this.state.changedPage){
+                        
+                        return (
+                            movie
+                        )                    
+                    }
+                    else {
+                        return null
+                    }
                 }   
             )     
-        )
-
-        // If there are no movies
+        )// If there are no movies
         : (
-            <p>No movies</p>
+           []
         )
 
+        // Paginator
+        const renderMoviesPages = (moviesData) => {
+            const moviesList = moviesData
+            if (moviesData === [] ||  moviesData === null) {
+                return moviesData
+            }
+            else {
+                
+                var allPages = []
+                let limitPage 
+                let startPage
+                for (let i = 0 ; i < this.state.totalPageNumber; i++) {
+                    limitPage = (this.state.moviesPerPage * (i+1)) 
+                    startPage = (this.state.moviesPerPage) * i
+                    allPages[i] = moviesList.slice(startPage, limitPage)
+                }
+                return allPages[this.state.currentPage - 1]
+            }
+        }
 
+        
         // pagination movies selectes
-        const moviesSelectedPagination = this.renderMoviesPages().map(
+        const moviesSelectedPagination = renderMoviesPages(moviesData).map(
             movie => {
                 // Deleting movie
                 const handleDelete = () => {
                     this.props.deleteMovie(movie.id);
                 }
                 
-                console.log(this.renderMoviesPages())
+       
                 // Toggle like/dislike movie
                 const handleToggle = () => {
                 
@@ -169,24 +170,26 @@ class CardsList extends Component {
                 } 
                 }
 
+                // Filter per category
                 if ( (movie.category === this.state.categorySelected) && this.state.categoryIsSelected){
                     return (
                          <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
                  )}
 
-                 else if (this.state.categorySelected === "All" && this.state.categoryIsSelected){
+                // ALL category
+                  else if (this.state.categorySelected === "All" && this.state.categoryIsSelected){
                     return (
                         <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
                     )
                 }
-
+                // No filter selected
                 else if (!this.state.categoryIsSelected){
                     
                     return (
                         <Card key={movie.id} title={movie.title} category={movie.category} likes={movie.likes} dislikes={movie.dislikes} delete={handleDelete} toggle={handleToggle}/>    
                     )                    
                 }
-
+                // Pagination selected
                 else if (this.state.changedPage){
                     
                     return (
@@ -194,11 +197,13 @@ class CardsList extends Component {
                     )                    
                 }
 
-                else {
-                    return (
-                        <Fragment></Fragment>
-                    )
-                }
+                          
+
+                // else {
+                //     return (
+                //         <Fragment></Fragment>
+                //     )
+                // }
           
             }
         )
@@ -221,7 +226,7 @@ class CardsList extends Component {
           
                     {moviesSelectedPagination}
                 
-
+                  
         
         
             </div> 
