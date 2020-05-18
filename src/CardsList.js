@@ -53,7 +53,8 @@ class CardsList extends Component {
         this.setState({
             paginationIsSelected : true,
             moviesPerPage : target,
-            totalPageNumber : Math.ceil(this.props.movies.length / target)
+            totalPageNumber : Math.ceil(this.props.movies.length / target),
+            currentPage : 1
         })
     }
 
