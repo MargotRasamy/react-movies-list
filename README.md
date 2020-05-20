@@ -2,7 +2,7 @@
 # Movie selection list
 ## Test for Particeep company's interview for an internship.
 
-### To run the project and see the style guide
+### To run the project
 Clone the project and enter in the cloned directory :
 
 * Install the dependencies
